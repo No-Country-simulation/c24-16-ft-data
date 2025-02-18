@@ -66,12 +66,12 @@ energy-dashboard/
 
 ---
 
-## 🚀 **Próximas Mejoras**
-💨 **Añadir predicciones con Machine Learning** 📈  
-🌱 **Gráficos de emisiones de CO₂ y eficiencia energética** 🌿  
-🔥 **Comparación de energías renovables vs. fósiles** ⚡️  
-📂 **Exportación de datos y gráficos en PDF o CSV** 📊
-❓ **Alguna otra idea que se nos ocurra a lo largo del proyecto**🎲
+## 🚀 Próximas Mejoras
+- 💨 Añadir predicciones con Machine Learning 📈  
+- 🌱 Gráficos de emisiones de CO₂ y eficiencia energética 🌿  
+- 🔥 Comparación de energías renovables vs. fósiles ⚡️  
+- 📂 Exportación de datos y gráficos en PDF o CSV 📊  
+- ❓ Alguna otra idea que se nos ocurra a lo largo del proyecto 🎲
 
 ---
 
