@@ -14,24 +14,24 @@ Este es un dashboard interactivo construido con **Dash y Plotly**, que permite v
 ---
 
 ## 🛠 **Instalación y Configuración**
-### **1⃣ Clonar el Repositorio**
+### **1 Clonar el Repositorio**
 ```bash
 git clone https://github.com/No-Country-simulation/c24-16-ft-data
 ```
 
-### **2⃣ Crear un Entorno Virtual (Opcional pero Recomendado)**
+### **2 Crear un Entorno Virtual (Opcional pero Recomendado)**
 ```bash
 python -m venv venv  # Crear entorno virtual
 source venv/bin/activate  # Linux/Mac
 venv\Scripts\activate  # Windows
 ```
 
-### **3⃣ Instalar Dependencias**
+### **3 Instalar Dependencias**
 ```bash
 pip install -r requirements.txt
 ```
 
-### **4⃣ Ejecutar la Aplicación**
+### **4 Ejecutar la Aplicación**
 ```bash
 python app.py
 ```
