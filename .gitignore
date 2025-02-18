@@ -1,0 +1,17 @@
+# 📦 Ignorar entornos virtuales
+venv/
+.env
+
+# 🗄 Ignorar caché de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 📊 Ignorar archivos de datos temporales
+data/*
+!data/owid-energy-data.csv
+
+# 🚀 Ignorar configuraciones y logs locales
+notebooks/
+*.log
