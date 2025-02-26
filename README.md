@@ -1,19 +1,37 @@
-# 🌍 Dashboard de Energía Global ⚡
+# **🌍 Energía Global ⚡**
 
-Este es un dashboard interactivo construido con **Dash y Plotly**, que permite visualizar datos de generación y consumo de energía a nivel global y por país. Se basa en el conjunto de datos de [Our World in Data](https://ourworldindata.org/energy).
+<!--Este es un dashboard interactivo construido con **Dash y Plotly**, que permite visualizar datos de generación y consumo de energía a nivel global y por país. Se basa en el conjunto de datos de [Our World in Data](https://ourworldindata.org/energy).-->
 
----
 
-## 📌 **Características**
+## 📄 Descripción del proyecto
+El proyecto tiene como objetivo ofrecer un sistema interactivo que permita visualizar y analizar datos relacionados con la energía a nivel global, lo que incluye el consumo de energía, la producción de fuentes renovables y no renovables, las emisiones de CO2, y las políticas energéticas de diferentes países. Se basa en el conjunto de datos de [Our World in Data](https://ourworldindata.org/energy). A través de un dashboard, los usuarios podrán entender las tendencias globales, comparar diferentes regiones y tomar decisiones informadas sobre el futuro energético.
+
+## 👥 Descripción del equipo y roles
+- **Ana Santos** - *Project Manager* : Responsable de la coordinación del equipo y la gestión del proyecto.
+- **Eglimar Ramirez** - *Data Science* : Responsable de detectar patrones de datos, y representar tendencias y predicciones.
+- **Cristobal Ramirez** - *Data Analyst* : Responsable del análisis de datos y creación de visualizaciones en Dash.
+- **Raul Tezen** - *Data Analyst* : Responsable del análisis de datos y creación de visualizaciones en Dash.
+
+## 📇 Metodología de trabajo 
+Para el desarrollo de este proyecto, se ha elegido la metodología ágil Scrum, debido a su enfoque iterativo e incremental que favorece la flexibilidad y la adaptación continua a los cambios, características clave para un entorno dinámico. Scrum permite dividir el proyecto en ciclos de trabajo cortos y manejables, denominados sprints, lo que facilita la entrega constante de valor y la retroalimentación temprana por parte del cliente.
+
+## 🗓️ Cronograma
+En proceso
+
+
+## 🛠️ Herramientas implementadas
+
+En proceso
+
+## 📌 Características
 ✔ Filtrado por país o vista global.  
 ✔ Visualización de las **10 principales fuentes de energía** en cada año.  
 ✔ Comparación de **generación vs. demanda de electricidad**.  
 ✔ **Gráficos interactivos** con sliders y opciones de selección.  
 ✔ **Diseño modular** con código organizado en `scripts/`.
 
----
 
-## 🛠 **Instalación y Configuración**
+## 🛠 Instalación y Configuración
 ### **1 Clonar el Repositorio**
 ```bash
 git clone https://github.com/No-Country-simulation/c24-16-ft-data
@@ -40,7 +58,7 @@ La aplicación estará disponible en:
 
 ---
 
-## 📎 **Estructura del Proyecto**
+## 📎 Estructura del Proyecto
 ```
 energy-dashboard/
 │── app.py  # Archivo principal que ejecuta Dash
@@ -58,7 +76,7 @@ energy-dashboard/
 
 ---
 
-## 🛠 **Funciones Actuales**
+## 🛠 Funciones Actuales
 ✅ **Visualización de las 10 principales fuentes de energía** con slider de años.  
 ✅ **Gráfico dinámico** de generación vs. demanda de electricidad.  
 ✅ **Filtrado por país o visión global.**  
