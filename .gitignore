@@ -9,9 +9,9 @@ __pycache__/
 *.pyd
 
 # 📊 Ignorar archivos de datos temporales
-data/*
-!data/owid-energy-data.csv
+# data/*
+# !data/owid-energy-data.csv
 
 # 🚀 Ignorar configuraciones y logs locales
-notebooks/
+# notebooks/
 *.log
