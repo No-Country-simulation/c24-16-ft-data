@@ -7,6 +7,9 @@ app.layout = create_layout()
 # Registrar callbacks
 register_callbacks(app)
 
+# Exponer el servidor Flask para Gunicorn
+server = app.server
+
 if __name__ == '__main__':
     app.run_server(debug=True)
 
