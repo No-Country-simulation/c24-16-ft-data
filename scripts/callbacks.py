@@ -1,7 +1,11 @@
 from dash.dependencies import Input, Output
+import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from scripts.data_processing import load_data
+from scripts.data_processing import predict_electricity_demand
+from scripts.data_processing import predict_energy_mix
+
 
 df_melted, df_wide = load_data()
 
@@ -85,19 +89,25 @@ def register_callbacks(app):
     
     @app.callback(
         Output('renewables-fossil-pie-chart', 'figure'),
-        [Input('country-dropdown', 'value'), Input('year-slider-map', 'value')]
+        [Input('country-dropdown', 'value'), Input('year-slider-renewables', 'value')]  
     )
     def update_pie_chart(selected_country, selected_year):
         df_filtered = df_wide[(df_wide["country"] == selected_country) & (df_wide["year"] == selected_year)]
         
         if df_filtered.empty:
             return go.Figure()
-        
+
         labels = ["Renovable", "Fósil"]
         values = [df_filtered["renewables_share_elec"].values[0], df_filtered["fossil_share_elec"].values[0]]
         
-        fig = px.pie(names=labels, values=values, title=f"Proporción de Energía Renovable vs. Fósil en {selected_country} ({selected_year})")
+        fig = px.pie(
+            names=labels, 
+            values=values, 
+            title=f"Proporción de Energía Renovable vs. Fósil en {selected_country} ({selected_year})"
+        )
         return fig
+
+
     
     @app.callback(
         Output('world-map-chart', 'figure'),
@@ -122,4 +132,91 @@ def register_callbacks(app):
         )
         fig.update_geos(projection_type="natural earth")
         fig.update_layout(height=1000)  # Ajustar el tamaño del mapa
+        return fig
+    
+    @app.callback(
+        Output('forecast-chart', 'figure'),
+        [Input('country-dropdown', 'value')]
+    )
+    def update_forecast_chart(selected_country):
+        # Obtener el último año con datos reales
+        last_real_year = df_wide[df_wide["country"] == selected_country]["year"].max()
+
+        # Obtener predicción de Prophet
+        forecast = predict_electricity_demand(df_wide, country=selected_country)
+
+        # 📌 Filtrar la predicción SOLO para años futuros al último año con datos reales
+        forecast_filtered = forecast[forecast["ds"].dt.year > last_real_year]
+
+        # Crear figura
+        fig = go.Figure()
+
+        # 📌 Agregar predicción (solo años futuros)
+        fig.add_trace(go.Scatter(
+            x=forecast_filtered["ds"],
+            y=forecast_filtered["yhat"],
+            mode="lines",
+            name="Predicción",
+            line=dict(color="blue", dash="dash")
+        ))
+
+        # 📌 Agregar límites de confianza
+        fig.add_trace(go.Scatter(
+            x=forecast_filtered["ds"],
+            y=forecast_filtered["yhat_lower"],
+            mode="lines",
+            line=dict(color="red", dash='dot'),
+            name="Límite Inferior"
+        ))
+
+        fig.add_trace(go.Scatter(
+            x=forecast_filtered["ds"],
+            y=forecast_filtered["yhat_upper"],
+            fill="tonexty",
+            mode="lines",
+            line=dict(color="green", dash='dot'),
+            name="Límite Superior"
+        ))
+
+        # 📌 Mostrar el país en el título
+        fig.update_layout(
+            title=f"Predicción de Demanda de Electricidad en {selected_country}",
+            xaxis_title="Año",
+            yaxis_title="TWh",
+            legend_title="Leyenda"
+        )
+
+        return fig
+    
+    @app.callback(
+        Output('energy-mix-pie-chart', 'figure'),
+        [Input('country-dropdown', 'value')]
+    )
+    def update_energy_mix_pie(selected_country):
+        # Obtener predicción de mezcla energética
+        forecast = predict_energy_mix(df_wide, country=selected_country)
+
+        # Filtrar SOLO el año 2030
+        forecast_selected = forecast[forecast["ds"].dt.year == 2030]
+
+        # Si no hay datos para el 2030, devolver gráfico vacío
+        if forecast_selected.empty:
+            return go.Figure()
+
+        # Obtener valores de predicción
+        renewables = forecast_selected["renewables_yhat"].values[0]
+        fossils = forecast_selected["fossil_yhat"].values[0]
+
+        # Crear Pie Chart
+        fig = go.Figure(data=[go.Pie(
+            labels=["Renovables", "Fósiles"],
+            values=[renewables, fossils],
+            hole=0.4  # Hacerlo tipo "donut"
+        )])
+
+        # Configurar título
+        fig.update_layout(
+            title=f"Predicción de Mezcla Energética en {selected_country} (2030)",
+        )
+
         return fig
