@@ -1,8 +1,5 @@
 dash
 pandas
 plotly
-<<<<<<< HEAD
-=======
 prophet
->>>>>>> cc07b90 (Se agregaron gráficos de predicción y mejoras en el diseño del dashboard.)
 gunicorn
