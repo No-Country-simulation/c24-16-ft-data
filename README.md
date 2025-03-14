@@ -7,7 +7,7 @@ El proyecto tiene como objetivo ofrecer un sistema interactivo que permita visua
 ## 👥 Descripción del equipo y roles
 
 - **Ana Santos** - _Project Manager_ : Responsable de la coordinación del equipo y la gestión del proyecto.
-- **Cristobal Ramirez** - _Data Analyst_ : Responsable del análisis de datos y creación de visualizaciones en Dash.
+- **Cristóbal Rodríguez** - _Data Analyst_ : Responsable del análisis de datos y creación de visualizaciones en Dash.
 - **Raul Tezen** - _Data Analyst_ : Responsable del análisis de datos y creación de visualizaciones en Dash.
 
 ## 📇 Metodología de trabajo
